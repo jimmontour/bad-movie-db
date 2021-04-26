@@ -16,15 +16,15 @@ mongoose.connect(process.env.DATABASE_URL, {
    useUnifiedTopology: true
 }, console.log('you are connected to MongoDB!'))
 
-// Routes
-app.use("/movies", movieRoutes);
-
 // Middlewares
 app.use(morgan('common'))
 app.use(helmet())
 app.use(cors({
    origin: process.env.CORS_ORIGIN
 }))
+
+// Routes
+app.use("/movies", movieRoutes);
 
 const PORT = process.env.PORT || 1337;
 app.listen(PORT, console.log(`Listening on port ${PORT}`))
